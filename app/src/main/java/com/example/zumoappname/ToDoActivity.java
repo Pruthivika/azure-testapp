@@ -92,7 +92,7 @@ public class ToDoActivity extends Activity {
         try {
             // Create the client instance, using the provided mobile app URL.
             mClient = new MobileServiceClient(
-                    "ZUMOAPPURL",
+                    "https://foodtestx.azurewebsites.net",
                     this).withFilter(new ProgressFilter());
 
             // Extend timeout from default of 10s to 20s
@@ -128,9 +128,9 @@ public class ToDoActivity extends Activity {
             refreshItemsFromTable();
 
         } catch (MalformedURLException e) {
-            createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
+            createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "ErrorTT");
         } catch (Exception e){
-            createAndShowDialog(e, "Error");
+            createAndShowDialog(e, "Errorx");
         }
     }
 
@@ -184,7 +184,7 @@ public class ToDoActivity extends Activity {
                         }
                     });
                 } catch (final Exception e) {
-                    createAndShowDialogFromTask(e, "Error");
+                    createAndShowDialogFromTask(e, "ErrorMM");
                 }
 
                 return null;
@@ -238,7 +238,7 @@ public class ToDoActivity extends Activity {
                         }
                     });
                 } catch (final Exception e) {
-                    createAndShowDialogFromTask(e, "Error");
+                    createAndShowDialogFromTask(e, "ErrorYY");
                 }
                 return null;
             }
@@ -289,7 +289,7 @@ public class ToDoActivity extends Activity {
                         }
                     });
                 } catch (final Exception e){
-                    createAndShowDialogFromTask(e, "Error");
+                    createAndShowDialogFromTask(e, "ErrorAA");
                 }
 
                 return null;
@@ -353,7 +353,7 @@ public class ToDoActivity extends Activity {
                     syncContext.initialize(localStore, handler).get();
 
                 } catch (final Exception e) {
-                    createAndShowDialogFromTask(e, "Error");
+                    createAndShowDialogFromTask(e, "ErrorBB");
                 }
 
                 return null;
@@ -395,11 +395,12 @@ public class ToDoActivity extends Activity {
      * @param title
      *            The dialog title
      */
-    private void createAndShowDialogFromTask(final Exception exception, String title) {
+    private void createAndShowDialogFromTask(final Exception exception, final String title) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                createAndShowDialog(exception, "Error");
+                createAndShowDialog(exception, title
+                );
             }
         });
     }
